@@ -1411,7 +1411,7 @@ function _$kg() {
 }
 
 function _$pD() {
-    return "complete";
+    return "compvare";
 }
 
 function _$qo() {
@@ -1667,7 +1667,7 @@ function _$bB() {
 }
 
 function _$nX() {
-    return "delete";
+    return "devare";
 }
 
 function _$ma() {
@@ -1907,7 +1907,7 @@ function _$gV() {
 }
 
 function _$tL() {
-    return "onautocomplete";
+    return "onautocompvare";
 }
 
 function _$ku() {
@@ -2783,7 +2783,7 @@ function _$vr() {
 }
 
 function _$tJ() {
-    return "ARSession,AudioTrackList,BeforeInstallPromptEvent.prototype.KEYUP,BlobDownloadCallback,CDATASection.prototype.remove,CSSCharsetRule,CSSPrimitiveValue.CSS_VH,CanvasRenderingContext2D.prototype.webkitGetImageDataHD,ClickData,CloseEvent.prototype.initCloseEvent,Components.interfaces.ICometMarksExtension,DeviceOrientationEvent,Function.prototype.bind,GetPerfTests,HTMLDocument.prototype.createTouchList,HTMLFormElement.prototype.requestAutocomplete,HTMLFrameSetElement.prototype.hasPointerCapture,HTMLFrameSetElement.prototype.webkitRequestFullScreen,Intl,MTT_WKSetTextSizeIndex,MediaController,MediaEncryptedEvent,Notification,Object.prototype.__defineSetter__,Object.seal,Object.setPrototypeOf,OffscreenCanvasRenderingContext2D,Path2D.prototype.addPath,PaymentResponse,PerformancePaintTiming,PresentationConnectionCloseEvent,ReaderModeArticlePage,SVGGraphicsElement.prototype.mozRequestPointerLock,SVGPatternElement.SVG_UNIT_TYPE_OBJECTBOUNDINGBOX,ScreenOrientation,SogouLoginUtils,SourceBuffer,SourceBuffer.prototype.changeType,SpeechSynthesisUtterance,TextTrackList.prototype.getTrackById,UCWebExt,WebKitFlags,_WXJS,__$_qihoo360_$__,__firefox__,__ksabCssCount,__opera,__sogou_secure_input,_double11_,chrome,chrome.app.InstallState,chrome.csi,console,defaultStatus,document.body.onmouseenter,document.body.onpage,document.body.style.backgroundBlendMode,document.body.style.lineBreak,document.body.style.minWidth,document.body.style.msTextSizeAdjust,document.body.style.textAlignLast,document.body.x-ms-acceleratorkey,document.defaultCharset,document.documentElement.onresize,document.fileCreatedDate,document.msCapsLockWarningOff,document.onmousemove,document.onselectionchange,document.scrollingElement.style.fontVariantNumeric,document.selection,document.selection.typeDetail,external,external.AddFavorite,external.IsSearchProviderInstalled,flyflow_wallpaper_js,getMatchedCSSRules,greentea,isNodeWhitespace,jesion,onerror,onmessage,onoperadetachedviewchange,openDatabase,password_manager_enabled,performance,showModalDialog,taobrowser_Event,weatherBridge,webkitAudioContext.prototype.close,webkitRequestFileSystem";
+    return "ARSession,AudioTrackList,BeforeInstallPromptEvent.prototype.KEYUP,BlobDownloadCallback,CDATASection.prototype.remove,CSSCharsetRule,CSSPrimitiveValue.CSS_VH,CanvasRenderingContext2D.prototype.webkitGetImageDataHD,ClickData,CloseEvent.prototype.initCloseEvent,Components.interfaces.ICometMarksExtension,DeviceOrientationEvent,Function.prototype.bind,GetPerfTests,HTMLDocument.prototype.createTouchList,HTMLFormElement.prototype.requestAutocompvare,HTMLFrameSetElement.prototype.hasPointerCapture,HTMLFrameSetElement.prototype.webkitRequestFullScreen,Intl,MTT_WKSetTextSizeIndex,MediaController,MediaEncryptedEvent,Notification,Object.prototype.__defineSetter__,Object.seal,Object.setPrototypeOf,OffscreenCanvasRenderingContext2D,Path2D.prototype.addPath,PaymentResponse,PerformancePaintTiming,PresentationConnectionCloseEvent,ReaderModeArticlePage,SVGGraphicsElement.prototype.mozRequestPointerLock,SVGPatternElement.SVG_UNIT_TYPE_OBJECTBOUNDINGBOX,ScreenOrientation,SogouLoginUtils,SourceBuffer,SourceBuffer.prototype.changeType,SpeechSynthesisUtterance,TextTrackList.prototype.getTrackById,UCWebExt,WebKitFlags,_WXJS,__$_qihoo360_$__,__firefox__,__ksabCssCount,__opera,__sogou_secure_input,_double11_,chrome,chrome.app.InstallState,chrome.csi,console,defaultStatus,document.body.onmouseenter,document.body.onpage,document.body.style.backgroundBlendMode,document.body.style.lineBreak,document.body.style.minWidth,document.body.style.msTextSizeAdjust,document.body.style.textAlignLast,document.body.x-ms-acceleratorkey,document.defaultCharset,document.documentElement.onresize,document.fileCreatedDate,document.msCapsLockWarningOff,document.onmousemove,document.onselectionchange,document.scrollingElement.style.fontVariantNumeric,document.selection,document.selection.typeDetail,external,external.AddFavorite,external.IsSearchProviderInstalled,flyflow_wallpaper_js,getMatchedCSSRules,greentea,isNodeWhitespace,jesion,onerror,onmessage,onoperadetachedviewchange,openDatabase,password_manager_enabled,performance,showModalDialog,taobrowser_Event,weatherBridge,webkitAudioContext.prototype.close,webkitRequestFileSystem";
 }
 
 function _$iT() {
@@ -4494,9 +4494,6 @@ function _$m8() {
     return "_$pB";
 }
 
-/**
- * vm
- */
 function _$m7(_$pH) {
     this._$hJ = _$pH;
 }
@@ -5590,6 +5587,7 @@ function _$DX(_$Eh, _$FN) {
         if (typeof _$Eh !== _$eJ())
             _$Eh += _$cZ();
         var _$dj = _$HQ(_$Eh);
+        _$dj = {"_$Jd": "/txnGoodsService01.ajax", "_$In": "", "_$Ix": "", "_$IO": "/txnGoodsService01.ajax", "_$EO": "80", "_$G8": "wsjs.saic.gov.cn", "_$Ia": "http:", "_$G2": "http://wsjs.saic.gov.cn", "_$EU": "http://wsjs.saic.gov.cn/txnGoodsService01.ajax", "_$CX": false, "_$Eq": "/txnGoodsService01.ajax", "_$H2": 2};
         _$Eh = _$nR(_$Eh, _$dj);
     } catch (_$nO) {
         return _$Eh;
@@ -7770,7 +7768,7 @@ function _$q0(_$pH, _$FN) {
 }
 
 function _$IR() {
-    return _$Jr[_$ql()];
+    return location;
 }
 
 function _$Ga(_$zt) {
@@ -10988,9 +10986,18 @@ function _$wZ(_$F2) {
             if (_$uA[_$HX] === _$eE())
                 _$nO = _$cr();
         }
-        var _$pH = _$Jq[_$pv()](_$zp());
+        // var _$pH =_$Jq[_$pv()](_$zp());
+        var _$pH = {
+            "protocol": ":",
+            "hostname": "wsjs.saic.gov.cn",
+            "port": "",
+            "pathname": _$F2,
+            "search": "",
+            "hash": "",
+            "origin": "http://wsjs.saic.gov.cn",
+        };
         _$pH[_$F6] = _$F2;
-        _$pH[_$F6] = _$pH[_$F6];
+        _$pH[_$F6] = "http://wsjs.saic.gov.cn" + _$pH[_$F6];
         if (_$pH[_$F6] !== _$Ib && _$GZ(_$pH[_$F6], _$BA())) {
             _$FN._$H2 = 5;
             return _$FN;
@@ -11589,7 +11596,7 @@ function _$sI() {
 }
 
 function _$gv(_$FN) {
-    if (_$FN === _$Jr[_$ql()])
+    if (_$FN === location)
         return true;
     var _$nO = [_$q3(), _$f7(), _$bH()];
     for (var _$pH = 0; _$pH < _$nO.length; _$pH++) {
@@ -11691,7 +11698,7 @@ function _$B1(_$pH) {
 function _$v8(_$FS) {
     var _$nO, _$FN;
     _$GA();
-    _$Iy(4, undefined); // TODO
+    _$Iy(4, undefined); //
     _$FS = _$FS || 255;
     var _$F2 = 0;
     var _$zt = new _$I4(128)
@@ -12095,7 +12102,7 @@ function _$mT(_$fx) {
 }
 
 function _$wC() {
-    var _$pH = _$Jr[_$ql()];
+    var _$pH = location;
     var _$fx = _$a9(_$pH[_$h0()], _$s1())[1];
     return _$gA.call(_$pH[_$gm()], _$fl(), _$pH[_$c8()], _$pH[_$nc()], _$cL, _$fx);
 }
@@ -14326,9 +14333,6 @@ _$vc[_$q9()]._$zw = function (_$fx) {
 }
 ;
 
-/**
- * html
- */
 function _$lZ(_$fx, _$FN) {
     for (var _$pH = 0; _$pH < _$FN.length; _$pH++) {
         _$Jr[_$Hf(_$fx[_$pH])] = _$Ba(_$FN[_$pH]);
@@ -15474,9 +15478,6 @@ function _$su(_$pH, _$fx, _$FN, _$nO) {
     }
 }
 
-/**
- * custom
- */
 function _$vi() {
     _$FC = 26;
     var _$jx = ["kEEa_Chu8Iq7ZUUCFMLXgDUzFiePj1uPM8rN7n4N3Hm.7nu9MIeyZsD68ipyZP_gRI0SXD.6MI7X7OE", "VTRBJc3OxuQe8sqCWPGG3Ul4HulntalxJq9vAOqHHrQCxn31xa…SLnkatX9CX6ojWBL0gkCvx5AOzv_ZRBg.zoDXM4gSynIvHHNz", "z5bCQrMnOGDv1bC.c_TrXq", "KQAztCS8kfV", "hJGA7VtNKFgW.TK718qiz9K41EYcaanWs3yxCA_U1RwRG25QmNfROT_1MR23GG4iKLyqfVvWk7Wi0aHt", "1xm0Zu6bHHabzcoSwMANZnuhhIG_51cyFHZ9dkBzwM0juuuYxZ….tEQr2CnIqQLJgaOcEFLjzH5fsuptXDZf8drf02c.xHW9v0o3", "Mnfq", "1559759283048", "Kle9xO3Gh1YgiuSX8OqeWu9OJcWoJkQ_is3e8UGLE10e36L6WAAZrkRq8rVycc0qRVAPkaQ.m9z6Yq", "pBS_21PJWgNbPuyaEOS23kx6WC7NxCwPxvWbx1zbxbgXR1qfWC…xpt20uQnfltfrXmOpWxYQXsCZYRp0SUnztEvT2NeOv.5u2Rv9", "", "mdTZJFxR2.rw9enCdd5QTYcUzfMilnHFt0irDTHqDu0", "lBWXbvnlRglnGbXowZVa9UX8wNyZ6OtsQyJ6aOmnwvrbRCr6tUrZMvRLW1w2FUeZwOQStsWOhA", "p0p4h19TWOxvhPJTRsL3HbY.WuV6toN7WnLdxDYSJugbWcEZtk…qBKDYVwTQ6lDYxJrg5rnxpRAqbocqDtY0uoOwEQAWdsCYYFlG", "", "0XO77jAWXtMNsI0kjBjoap1x9sUgSuSrbkV1aRj1cay7MwWRRuxDgO2SHFdUJmfQ", "mIZN2vfa36VCwbeuQu90MUePQbxgtORGQOQ0YDx08lyyFvWzJbR6IKJ6tummxcQ6JO3ytA", "Ik2qVrxtcVeQVfTADAJ8sp9Sc1AHJ93jl1x8RpVPAKVYxpN.Uk…8bdu_bBdY9Qs42Hsr9W.Z2WU4sNUwSRhqdTyIcXlAerbdUjmc", "", "0", "iz3DBT1vs_aF.VijU533zmiyU.zVdpjxUza3O2KqKgfISSjAKgzHOAIhAEx2josiD70Y0q", "IWNqLSt4cMfQXAK5DIx87Gb2ch01ZYn6lhAHNVoTo.QE.pi0oI…iPkDwDx3g9p.1YwGIbSKMmemYaY4McN0APrvkUfM_ORPGTPrk", "Y4a40usQiezjSs5ImEZ", "V9vIXpAfAZJ", "/txnS01.do", "oJgGz6tBFRAZPoOIHNryPobDFtwaP0PpMEa5nbP1ME9fu65D83…xHzxj9vcr8QG5TknlFEmavco3QRNXb6KsW3NuOnQShUm2isZe", "telFgp4.D5LwySE", "139", "3650", "wNwtdfOLq5TKerICl_mV4SHBqdLmTluWDErKnftRYWG3fmMske…sB0BNvbkriWfc9TIsg2BbpOoiIxJ_gsdFITo_qhLFjpHGYHSE", "x9WxJTgjwUVUFlEL", "1074839618", "16J6DPVlHGm.DcLFh9YNcnghHfggcolWHf7yrGMBh5pNO0DtAL…F0e4nI_hjTNNDbniiQn5c_LFI7jy1uSxMAdesXfRjg4yUcZwA", "", "80", "0", "38pwOA5YmxxrPAcmrJpkbq1FmE91bYXImELsP1n8rRwk0Cu5FH…qGmDqiwaQ5AkxqxpmnDC7oJVr9q6Gm3GafmbE1JlZelbfRWTa", "", "0a1397", "36139", "3qNQ3ay4mUfq3amOrsxc3GYGmUQsRTN2mUq1MnTgroTcippOlo…VrKqV0YpT0rVaRqYfpIklxwcGTEl90xpVT3kTTFqTxIDqzcka", "MerHLlvS2nwOezEo6chBwDnRLJ3JbBZpZlG2LYSIoUNc0OgkiA2dCx.o0ynXo4g16ZeUihvu0pN3PFAHo1ZPGCVR", "pLS0zvidIi0jyOMntIq0eGhnWBVbN6nOwt02ecdNxHVv_1h3x59vdv12QyJZuOshEZ0nSshWtQG", "", "A.Y56cuDJZJPTPHVxgwGn1IJJeGSnvOiJ_VaXq5zxjRGnVOW1Z…iZ071_9x5eGyCk0WFl4XPIj3hVOjnKuhH3C7uhvM5anN6vcIq", "", "346", "TwJWm5c4EqVc6xYKD26efq", "tVaYxVQeUkLxx9TzcnrQJT7jRkzJWD0us6VxJ9G0sDQhtVazUk…VVhD9lI1frWDqzwKGNAl0nec5SEZl4jp_2w_2bZrhYRZrt.ma", "xLGF_2HeVXYEj0UGpdyY7asz18p1d9OurBmxgmh_1HADel.6YI…WJmnloK1wrEafnor80pvK1R3Nql97WP7lPAxSjIpWp1S9vwDq", "", "", "YVNNEu74EkfTEuAOWox6EOqGEkQbxCZ2EkqvhSGgWsT681lOxs…UVKJq0GrCfrR0RTmPlIiAxL1OGExa0ZrUG3ifTBACQIhVz6sa", "MooTfC5mTsvftDPC3B6E5IKLyLywl0qlF3MFn.uVL6k_9CF566…DJjLzVJo10nO9TUCF_Hz1FuABqSGS4CXqq6AxjC8VOLPrz5IG", "", "", "lkL7V6yhRVGaV6mswAEnWvVaR1wOJnLjQCQah6p_WPRuFuq5Fs…05c_kwxV6dn5t.sb6WirS5CUehM7nXv6_FHrTZ6Ij8tEn9OtI", "p9J_EsWaWPLLRPZO8CL2tcGNEnw9McVfxu0TQbAnt1VnH1GnRO…jrozqtaE0qnZhFSENm6SFwf95VKpYL5HAPdkb89q9rsEmtpSg", "wAx3WVqSpsprWlV0ssRqWlWdssyqHa", "0", "qR0eeDdXwi7fubkWRxZO0KsYwWrn0OBx3z7OPUUsQQgZOvUE8w…S9vCFDFQgOasoUkHaEdGOScHqEZCK1QNTO9K1FHJTCQvw9Eka", "DHg9vDChMKe6EUNX8orjiszOwK2gQ0zfIbmztvNvwveZsCS_MK…bz.MoR11VyasDTDFap_1URYIoJ.sUS5QlA4m1Vk8TfzKvRrxa", "tx3sNrP2rj93LAFODhVI.St2DtYI4lhsrzxxn0XJsZz8P0BElNZ39a", "wVJlw9reAvrWwlT0pvTl"];
@@ -15589,9 +15590,6 @@ function _$vS() {
     }
 }
 
-/**
- * variables
- */
 // _$Jr = window;
 // _$Jq = document;
 _$d8 = Error;
@@ -15672,7 +15670,7 @@ _$HZ = {
     getClientDataInCookie: function () {
         return [];
     }
-}; // TODO
+};
 _$Ew = null;
 _$g2 = true;
 _$Iz = [113, 16, 348, 170, 116, 14, 351, 168, 121, 11, 356, 165, 395, 120, 395, 144, 357, 11, 397, 495, 352, 200, 394, 473, 352, 200, 394, 473, 116, 48, 388, 471, 111, 46, 383, 469, 107, 45, 378, 467, 103, 44, 374, 466, 101, 44, 372, 466, 97, 43, 369, 465, 94, 42, 366, 465, 91, 42, 363, 464, 89, 42, 360, 464, 87, 42, 358, 464, 85, 42, 356, 464, 82, 42, 354, 464, 80, 42, 352, 464, 79, 42, 351, 464, 77, 41, 349, 464, 76, 41, 348, 464, 76, 41, 347, 464, 75, 41, 347, 464, 251, 23, 251, 23, 259, 5, 258, 30, 268, 17, 267, 41, 278, 29, 278, 54, 290, 44, 289, 68, 303, 60, 302, 84, 317, 77, 317, 101, 330, 92, 330, 117, 355, 122, 354, 147, 145, 23, 380, 178, 112, 28, 390, 461, 112, 28, 390, 461, 115, 40, 387, 463, 108, 44, 380, 466, 104, 46, 375, 468, 101, 48, 372, 470, 99, 48, 371, 471, 99, 49, 370, 471, 98, 49, 370, 472, 97, 49, 369, 472, 325, 200, 366, 473, 322, 202, 364, 474, 319, 203, 361, 476, 317, 205, 358, 477, 314, 206, 355, 479, 311, 207, 353, 479, 308, 208, 350, 481, 303, 210, 345, 482, 300, 0, 340, 484, 295, 1, 335, 485, 291, 2, 331, 486, 286, 3, 327, 487, 282, 4, 322, 487, 280, 4, 321, 487, 277, 4, 318, 488, 274, 4, 315, 488, 271, 4, 312, 488, 269, 4, 309, 488, 267, 4, 307, 488, 263, 4, 304, 488, 261, 4, 301, 488, 259, 4, 299, 488, 256, 4, 296, 488, 252, 4, 292, 488, 248, 4, 289, 488, 245, 4, 285, 487, 243, 4, 283, 487, 240, 3, 280, 487, 237, 3, 277, 486, 235, 2, 275, 486, 232, 2, 273, 485, 230, 1, 271, 485, 228, 1, 269, 484, 227, 0, 268, 484, 224, 210, 266, 483, 223, 210, 264, 482, 221, 209, 262, 481, 219, 208, 261, 481, 217, 207, 259, 480, 216, 207, 257, 479, 214, 206, 256, 478, 213, 205, 254, 477, 212, 205, 253, 477, 210, 204, 252, 476, 210, 203, 251, 476, 209, 203, 251, 476, 209, 203, 250, 476, 208, 203, 250, 475, 208, 203, 249, 475, 207, 203, 249, 475, 207, 203, 248, 475, 206, 202, 247, 475, 205, 202, 247, 475, 204, 202, 246, 475, 204, 202, 245, 474, 203, 202, 244, 474, 202, 202, 244, 474, 202, 202, 243, 474, 202, 202, 243, 474, 201, 202, 243, 474, 201, 202, 243, 474, 202, 202, 243, 474, 205, 201, 246, 474, 210, 200, 251, 473, 216, 49, 258, 471, 6, 47, 268, 469, 7, 44, 278, 466, 20, 42, 292, 464, 40, 26, 318, 459, 58, 22, 337, 456, 82, 19, 360, 452, 108, 16, 387, 449, 115, 9, 393, 443, 115, 9, 393, 443, 99, 18, 378, 452, 82, 29, 360, 462, 80, 45, 352, 467, 293, 204, 335, 477, 277, 2, 318, 486, 262, 11, 302, 494, 246, 18, 287, 501, 233, 25, 274, 508, 228, 28, 268, 511, 218, 32, 258, 516, 209, 36, 249, 520, 201, 40, 241, 523, 3, 1, 234, 526, 189, 44, 229, 528, 186, 45, 227, 528, 182, 45, 223, 529, 178, 45, 218, 529, 175, 46, 215, 529, 172, 46, 213, 529, 170, 46, 210, 529, 168, 46, 208, 529, 166, 46, 206, 529, 164, 46, 205, 529, 163, 45, 204, 529, 162, 45, 203, 528, 162, 45, 202, 528, 161, 44, 201, 528, 161, 44, 201, 528, 160, 44, 201, 527, 160, 44, 201, 527, 160, 44, 200, 527, 160, 43, 200, 527, 160, 43, 200, 526, 160, 42, 200, 526, 160, 42, 200, 525, 160, 40, 200, 524, 159, 39, 200, 523, 159, 38, 200, 521, 159, 37, 200, 520, 159, 35, 199, 519, 159, 34, 199, 518, 159, 33, 199, 516, 159, 32, 199, 515, 159, 31, 199, 515, 159, 30, 199, 514, 159, 30, 199, 513, 159, 30, 199, 513, 159, 29, 199, 513, 159, 29, 199, 513, 0, 199, 513, 254, 24, 254, 24, 258, 2, 258, 26, 262, 5, 262, 29, 268, 7, 267, 32, 272, 10, 272, 34, 282, 15, 281, 40, 303, 26, 303, 51, 319, 34, 319, 58, 339, 43, 339, 67, 363, 52, 363, 77, 390, 64, 389, 88, 252, 24, 252, 23, 255, 4, 255, 29, 261, 9, 260, 33, 270, 17, 269, 41, 278, 23, 278, 48, 286, 30, 286, 54, 293, 36, 293, 60, 302, 44, 302, 68, 321, 60, 320, 84, 342, 79, 342, 103, 362, 98, 361, 122, 384, 120, 383, 144, 246, 23, 245, 22, 249, 0, 249, 25, 254, 3, 253, 27, 259, 5, 258, 30, 263, 9, 263, 34, 275, 16, 275, 41, 289, 27, 288, 51, 307, 40, 306, 64, 328, 56, 327, 81, 351, 74, 351, 98, 375, 92, 375, 117, 385, 100, 384, 125, 250, 23, 250, 22, 254, 1, 253, 26, 259, 6, 258, 31, 271, 17, 270, 42, 281, 28, 281, 52, 296, 40, 295, 65, 312, 55, 311, 79, 320, 63, 319, 88, 338, 79, 337, 103, 352, 93, 352, 117, 366, 106, 365, 131, 371, 111, 371, 135, 379, 120, 379, 144, 381, 122, 381, 147, 7, 4, 392, 159, 8, 6, 393, 160, 123, 4, 394, 427, 123, 4, 394, 427, 117, 8, 389, 430, 100, 2, 379, 436, 92, 7, 370, 440, 90, 8, 368, 441, 84, 11, 363, 444, 81, 13, 359, 446, 78, 14, 357, 447, 76, 15, 355, 448, 75, 15, 354, 449, 74, 15, 353, 449, 74, 16, 352, 449, 74, 16, 352, 449, 73, 16, 352, 449, 73, 16, 352, 450, 73, 16, 352, 450, 73, 16, 352, 450, 73, 16, 351, 450, 73, 16, 351, 450, 72, 16, 351, 450, 0, 351, 450, 20, 229, 229, 229, 229, 229, 229, 229, 20, 73, 16, 352, 450, 75, 16, 354, 450, 78, 16, 356, 450, 80, 16, 358, 450, 83, 16, 361, 450, 84, 16, 363, 450, 87, 16, 365, 450, 0, 345, 311, 57, 0, 434, 529, 0, 475, 546, 0, 453, 551, 0, 442, 542, 0, 459, 556, 0, 461, 542, 0, 438, 548, 0, 456, 354, 91, 0, 454, 540];
@@ -15754,10 +15752,10 @@ _$AE = {};
 _$eH = false;
 _$pj = undefined;
 _$pJ = undefined;
-_$GJ = {}; // TODO location
+_$GJ = {}; // location
 _$HR = JSON;
 _$H5 = null;
-_$sv = {}; // TODO location
+_$sv = {}; // location
 _$A1 = ";202.108.90.73:80;wsjs.saic.gov.cn:80;";
 _$Ed = 1074839618;
 _$yq = 3650;
@@ -15783,9 +15781,6 @@ _$nF = 0.04938647983247948;
 _$by = 20;
 _$nv = 5;
 
-/**
- * init
- */
 _$to();
 _$vi();
 _$vS();
@@ -15801,7 +15796,7 @@ function get_cookies() {
 }
 
 function get_MmEwMD(path) {
-    let arr = _$HW(_$dn(_$G0(path)));
+    var arr = _$HW(_$dn(_$G0(path)));
     return _$jN(path, arr, undefined).replace("MmEwMD=", "");
 }
 
@@ -15814,7 +15809,7 @@ function get_y7bRbp(path, args) {
 // }
 
 function get_c1K5tw0w6(args, y7bRbp_or_MmEwMD, number, flag) {
-    let c1 = _$c3(args, y7bRbp_or_MmEwMD, number, flag);
+    var c1 = _$c3(args, y7bRbp_or_MmEwMD, number, flag);
     return c1 instanceof Array ? c1[1] : c1.replace("c1K5tw0w6_=", "");
 }
 
@@ -15896,12 +15891,12 @@ function init_function(meta) {
         };
     }
 
-    let func = null;
+    var func = null;
     _$Am = init_meta(meta);
-    for (let i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
         _$op();
     }
-    let numbers = _$op();
+    var numbers = _$op();
     _$op();
     init_fragment(_$Am._$vE(), numbers[1], numbers[2]);
 
@@ -15909,6 +15904,30 @@ function init_function(meta) {
 }
 
 function get_hidden_input(meta) {
-    let func = init_function(meta);
+    var func = init_function(meta);
     return _$Ey(func(53)) + _$Ey(func(54));
+}
+
+
+function meta2token(meta) {
+    var func = init_function(meta);
+    return _$Ey(func(5));
+}
+
+
+function token2arr(token) {
+    var _$pH = undefined;
+    var _$dj = [];
+    var _$uA = token;
+    if (_$uA && _$uA.length >= _$dy) {
+        _$pH = _$GP.call(_$uA, 0);
+        var _$FN = _$I1(_$Hh.call(_$uA, 1));
+        var _$Eh = _$FN[_$Gh + 1];
+        for (var _$nO = 0; _$nO < _$Gh + 1; _$nO++) {
+            _$FN[_$nO] ^= _$Eh;
+        }
+        _$dj = _$FN[_$nh()](0, _$Gh + 1);
+        var _$F2 = _$FN[_$nh()](_$Gh + 2);
+    }
+    return [_$pH, _$dj, _$Eh, _$F2];
 }
