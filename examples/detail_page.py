@@ -5,47 +5,57 @@ from urllib import parse
 import requests
 from lxml import html
 
-API = "http://120.78.76.198:8000/trademark"
+from common.api import online_encrypt
+from common.js import ctx
+from examples import _BaseExample
+
+API = "http://120.78.76.198:8000/trademark/detail"
 
 
-class DetailPageExample:
-    def __init__(self):
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-            "Cache-Control": "max-age=0",
-            "Connection": "keep-alive",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Host": "wsjs.saic.gov.cn",
-            "Origin": "http://wsjs.saic.gov.cn",
-            "Referer": "http://wsjs.saic.gov.cn",
-            "Upgrade-Insecure-Requests": "1",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-        })
+class DetailPageExample(_BaseExample):
+    def __init__(self, tid: str, *args, **kwargs):
+        super(DetailPageExample, self).__init__(*args, **kwargs)
+        self.tid = tid
 
-    def _request(self, url: str, tid: str) -> requests.Response:
+    @staticmethod
+    def local_encrypt(path: str, request_args: dict) -> dict:
+        """调用本地js上下文加密"""
+        string = "&".join(f"{k}={v}" for k, v in request_args.items())
+
+        cookies = ctx.call("get_cookies")
+
+        y7b = ctx.call("get_y7bRbp", path, string)
+        c1k5 = ctx.call("get_c1K5tw0w6", string, y7b, 2)
+        params = {"y7bRbp": y7b, "c1K5tw0w6_": c1k5}
+
+        return {
+            "cookies": cookies,
+            "params": params,
+        }
+
+    def _request(self, url: str) -> requests.Response:
         path = parse.urlparse(url).path
 
         request_args = {
-            "request:tid": tid,
+            "request:tid": self.tid,
         }
 
-        response = self.session.post(API, json={"path": path, "request_args": request_args})
-        json_data = response.json()
-        pprint(json_data)
+        # 本地加密 TODO 已失效
+        # kwargs = self.local_encrypt(path=path, request_args=request_args)
 
-        response = self.session.post(url, **json_data)
+        # 在线加密
+        kwargs = online_encrypt(url=API, path=path, request_args=request_args)
+
+        response = self.session.post(url, **kwargs)
         if response.status_code != 200:
             raise Exception(response.status_code)
 
         return response
 
-    def detail_page(self, tid: str):
+    def detail_page(self):
         """商标详情页"""
         url = "http://wsjs.saic.gov.cn/txnDetail.do"
-        response = self._request(url=url, tid=tid)
+        response = self._request(url)
 
         # 提取数据
         html_doc = html.fromstring(response.content)
@@ -67,10 +77,10 @@ class DetailPageExample:
         else:
             print("商标详情无数据，可能是商标正等待受理，暂无法查询详细信息。")
 
-    def process_page(self, tid: str):
+    def process_page(self):
         """商标流程页"""
         url = "http://wsjs.saic.gov.cn/txnDetail2.do"
-        response = self._request(url=url, tid=tid)
+        response = self._request(url=url)
 
         # 提取数据
         keys = ("申请/注册号", "业务名称", "环节名称", "结论", "日期")
@@ -78,18 +88,18 @@ class DetailPageExample:
             values = [td.xpath("string()") for td in table.xpath(".//td")]
             print(dict(zip(keys, values)))
 
-    def run(self, tid: str):
+    def run(self):
         try:
-            self.detail_page(tid)
+            self.detail_page()
         except Exception as e:
             print(e)
 
         try:
-            self.process_page(tid)
+            self.process_page()
         except Exception as e:
             print(e)
 
 
 if __name__ == "__main__":
-    example = DetailPageExample()
-    example.run(tid="TID2019057434B2208C2A7FED13413F699DF629A035310")
+    example = DetailPageExample(tid="TID2019057434B2208C2A7FED13413F699DF629A035310")
+    example.run()

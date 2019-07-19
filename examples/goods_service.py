@@ -1,31 +1,33 @@
 """商品/服务项目tab example"""
 from urllib import parse
 
-import execjs.runtime_names
-import requests
 from lxml import html
 
-from js import get_crack_js
+from common.api import online_encrypt
+from common.js import ctx
+from examples import _BaseExample
 
-ctx = execjs.get(execjs.runtime_names.Node).compile(get_crack_js())
+API = "http://120.78.76.198:8000/trademark/goods_service"
 
 
-class GoodsServiceExample:
-    def __init__(self):
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-            "Cache-Control": "max-age=0",
-            "Connection": "keep-alive",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Host": "wsjs.saic.gov.cn",
-            "Origin": "http://wsjs.saic.gov.cn",
-            "Referer": "http://wsjs.saic.gov.cn",
-            "Upgrade-Insecure-Requests": "1",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-        })
+class GoodsServiceExample(_BaseExample):
+    @staticmethod
+    def local_encrypt(path: str, request_args: dict) -> dict:
+        """调用本地js上下文加密"""
+        string = "&".join(f"{k}={v}" for k, v in request_args.items())
+
+        cookies = ctx.call("get_cookies")
+
+        mm = ctx.call("get_MmEwMD", path)
+        c1k5 = ctx.call("get_c1K5tw0w6", string, mm, 5)
+        params = {"MmEwMD": mm}
+        data = {"c1K5tw0w6_": c1k5}
+
+        return {
+            "cookies": cookies,
+            "params": params,
+            "data": data,
+        }
 
     def run(self):
         url = "http://wsjs.saic.gov.cn/txnGoodsService01.ajax"
@@ -50,21 +52,16 @@ class GoodsServiceExample:
             "attribute-node:record_sort-column": "",
             "attribute-node:record_start-row": (page - 1) * page_size + 1,
         }
-        string = "&".join(f"{k}={v}" for k, v in request_args.items())
 
-        # 更新cookie
-        self.session.cookies.update(ctx.call("get_cookies"))
+        # 本地加密 TODO 已失效
+        # kwargs = self.local_encrypt(path=path, request_args=request_args)
 
-        # 加密请求参数
-        mm = ctx.call("get_MmEwMD", path)
-        c1k5 = ctx.call("get_c1K5tw0w6", string, mm, 5)
+        # 在线加密
+        kwargs = online_encrypt(url=API, path=path, request_args=request_args)
+        response = self.session.post(url, **kwargs)
 
-        params = {"MmEwMD": mm}
-        data = {"c1K5tw0w6_": c1k5}
-
-        response = self.session.post(url, params=params, data=data)
         if response.status_code != 200:
-            raise Exception(response.content.decode())
+            raise Exception(response.status_code)
 
         # 提取数据
         html_doc = html.fromstring(response.content)

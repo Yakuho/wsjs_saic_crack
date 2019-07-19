@@ -2,31 +2,48 @@
 import hashlib
 from urllib import parse
 
-import execjs.runtime_names
-import requests
 from lxml import html
 
-from js import get_crack_js
+from common.api import online_encrypt
+from common.js import ctx
+from examples import _BaseExample
 
-ctx = execjs.get(execjs.runtime_names.Node).compile(get_crack_js())
+API = "http://120.78.76.198:8000/trademark/list"
 
 
-class ListPageExample:
-    def __init__(self):
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-            "Cache-Control": "max-age=0",
-            "Connection": "keep-alive",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Host": "wsjs.saic.gov.cn",
-            "Origin": "http://wsjs.saic.gov.cn",
-            "Referer": "http://wsjs.saic.gov.cn",
-            "Upgrade-Insecure-Requests": "1",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
-        })
+class ListPageExample(_BaseExample):
+    @staticmethod
+    def local_encrypt(path: str, request_args: dict) -> dict:
+        """调用本地js上下文加密"""
+
+        if path == "/txnRead01.do":
+            string = "&".join(f"{k}={v}" for k, v in request_args.items())
+
+            y7b = ctx.call("get_y7bRbp", path, "")
+            c1k5 = ctx.call("get_c1K5tw0w6", string, y7b, 7)
+
+            params = {"y7bRbp": y7b}
+            data = {"c1K5tw0w6_": c1k5}
+
+        elif path == "/txnRead02.ajax":
+            string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
+
+            mm = ctx.call("get_MmEwMD", path)
+            c1k5 = ctx.call("get_c1K5tw0w6", string, mm, 5)
+
+            params = {"MmEwMD": mm}
+            data = {"c1K5tw0w6_": c1k5}
+
+        else:
+            raise Exception("invalid path")
+
+        cookies = ctx.call("get_cookies")
+
+        return {
+            "cookies": cookies,
+            "params": params,
+            "data": data,
+        }
 
     @staticmethod
     def get_md5(data: dict) -> str:
@@ -54,19 +71,14 @@ class ListPageExample:
             "request:md5": None,  # md5签名
         }
         request_args["request:md5"] = ListPageExample.get_md5(request_args)
-        string = "&".join(f"{k}={v}" for k, v in request_args.items())
 
-        # 更新cookie
-        self.session.cookies.update(ctx.call("get_cookies"))
+        # 本地加密 TODO 已失效
+        # kwargs = self.local_encrypt(path=path, request_args=request_args)
 
-        # 加密请求参数
-        y7b = ctx.call("get_y7bRbp", path, "")
-        c1k5 = ctx.call("get_c1K5tw0w6", string, y7b, 7, True)
+        # 在线加密
+        kwargs = online_encrypt(url=API, path=path, request_args=request_args)
+        response = self.session.post(url, **kwargs)
 
-        params = {"y7bRbp": y7b}
-        data = {"c1K5tw0w6_": c1k5}
-
-        response = self.session.post(url, params=params, data=data)
         if response.status_code != 200:
             raise Exception(response.status_code)
 
@@ -76,6 +88,7 @@ class ListPageExample:
         input_tags = ctx.call("get_hidden_input", meta)
         html_args = {tag.get("name"): tag.get("value") for tag in html.fromstring(input_tags).xpath("//input")}
 
+        print(html_args)
         return html_args
 
     def step2(self, keyword: str, html_args: dict):
@@ -87,8 +100,8 @@ class ListPageExample:
         page_size = 50
 
         request_args = {
-            "request:queryCom": "1",
             "locale": "zh_CN",  # 语言
+            "request:queryCom": "1",
             "request:nc": "",  # 国际分类
             "request:sn": "",  # 申请/注册号
             "request:mn": keyword,  # 商标名称
@@ -111,19 +124,14 @@ class ListPageExample:
             "attribute-node:record_sort-column": "RELEVANCE",
             "attribute-node:record_start-row": (page - 1) * page_size + 1,
         }
-        string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
 
-        # 更新cookie
-        self.session.cookies.update(ctx.call("get_cookies"))
+        # 本地加密 TODO 已失效
+        # kwargs = self.local_encrypt(path=path, request_args=request_args)
 
-        # 加密请求参数
-        mm = ctx.call("get_MmEwMD", path)
-        c1k5 = ctx.call("get_c1K5tw0w6", string, mm, 5)
+        # 在线加密
+        kwargs = online_encrypt(url=API, path=path, request_args=request_args)
+        response = self.session.post(url, **kwargs)
 
-        params = {"MmEwMD": mm}
-        data = {"c1K5tw0w6_": c1k5}
-
-        response = self.session.post(url, params=params, data=data)
         if response.status_code != 200:
             raise Exception(response.status_code)
 
