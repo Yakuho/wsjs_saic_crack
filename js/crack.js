@@ -15931,3 +15931,9 @@ function token2arr(token) {
     }
     return [_$pH, _$dj, _$Eh, _$F2];
 }
+
+
+function get_hidden_input_v2(meta) {
+    var func = init_function(meta);
+    return _$Ey(func(51)) + _$Ey(func(52));
+}

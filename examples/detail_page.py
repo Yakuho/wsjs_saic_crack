@@ -20,7 +20,7 @@ class DetailPageExample(_BaseExample):
     @staticmethod
     def local_encrypt(path: str, request_args: dict) -> dict:
         """调用本地js上下文加密"""
-        string = "&".join(f"{k}={v}" for k, v in request_args.items())
+        string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
 
         cookies = ctx.call("get_cookies")
 
@@ -42,7 +42,6 @@ class DetailPageExample(_BaseExample):
 
         # 本地加密 TODO 已失效
         # kwargs = self.local_encrypt(path=path, request_args=request_args)
-
         # 在线加密
         kwargs = online_encrypt(url=API, path=path, request_args=request_args)
 

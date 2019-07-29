@@ -12,13 +12,13 @@ API = "http://120.78.76.198:8000/trademark/list"
 
 
 class ListPageExample(_BaseExample):
+
     @staticmethod
     def local_encrypt(path: str, request_args: dict) -> dict:
         """调用本地js上下文加密"""
+        string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
 
         if path == "/txnRead01.do":
-            string = "&".join(f"{k}={v}" for k, v in request_args.items())
-
             y7b = ctx.call("get_y7bRbp", path, "")
             c1k5 = ctx.call("get_c1K5tw0w6", string, y7b, 7)
 
@@ -26,8 +26,6 @@ class ListPageExample(_BaseExample):
             data = {"c1K5tw0w6_": c1k5}
 
         elif path == "/txnRead02.ajax":
-            string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
-
             mm = ctx.call("get_MmEwMD", path)
             c1k5 = ctx.call("get_c1K5tw0w6", string, mm, 5)
 
@@ -35,7 +33,7 @@ class ListPageExample(_BaseExample):
             data = {"c1K5tw0w6_": c1k5}
 
         else:
-            raise Exception("invalid path")
+            raise Exception(f"invalid path: {path}")
 
         cookies = ctx.call("get_cookies")
 
@@ -70,22 +68,25 @@ class ListPageExample(_BaseExample):
             "request:hne": "",  # 申请人名称(英文)
             "request:md5": None,  # md5签名
         }
-        request_args["request:md5"] = ListPageExample.get_md5(request_args)
+        request_args["request:md5"] = self.get_md5(request_args)
 
         # 本地加密 TODO 已失效
         # kwargs = self.local_encrypt(path=path, request_args=request_args)
-
         # 在线加密
         kwargs = online_encrypt(url=API, path=path, request_args=request_args)
-        response = self.session.post(url, **kwargs)
 
+        response = self.session.post(url, **kwargs)
         if response.status_code != 200:
             raise Exception(response.status_code)
 
-        # 解析meta标签(9DhefwqGPrzGxEp9hPaoag)
-        meta = html.fromstring(response.content).xpath("//*[@id='9DhefwqGPrzGxEp9hPaoag']")[0].get("content")
+        html_doc = html.fromstring(response.content)
+        if html_doc.xpath("//title/text()")[0] == "请继续":
+            raise Exception("出现验证码")  # 换IP
+
+        # 提取后续请求所需参数
+        meta = html_doc.xpath("//meta")[3].get("content")
         # 得到input隐藏域参数
-        input_tags = ctx.call("get_hidden_input", meta)
+        input_tags = ctx.call("get_hidden_input_v2", meta)
         html_args = {tag.get("name"): tag.get("value") for tag in html.fromstring(input_tags).xpath("//input")}
 
         print(html_args)
@@ -127,11 +128,10 @@ class ListPageExample(_BaseExample):
 
         # 本地加密 TODO 已失效
         # kwargs = self.local_encrypt(path=path, request_args=request_args)
-
         # 在线加密
         kwargs = online_encrypt(url=API, path=path, request_args=request_args)
-        response = self.session.post(url, **kwargs)
 
+        response = self.session.post(url, **kwargs)
         if response.status_code != 200:
             raise Exception(response.status_code)
 
