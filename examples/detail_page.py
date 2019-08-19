@@ -10,6 +10,7 @@ API = "http://120.78.76.198:8000/trademark/detail"
 
 class DetailPageExample(_BaseExample):
     def __init__(self, tid: str, *args, **kwargs):
+        raise Exception("暂不可用，携带错误参数访问返回400大概率封IP，非要测试请配置代理访问")
         super(DetailPageExample, self).__init__(*args, **kwargs)
         self.tid = tid
 
@@ -24,8 +25,8 @@ class DetailPageExample(_BaseExample):
         response = self._request(url=url, request_args=request_args, api=API)
 
         # 提取数据
-        html_doc = html.fromstring(response.content)
-        if not all((not v or v == "null") for v in html_doc.xpath("//*[@id='detailParameter']/input/@value")):
+        if rb"infoComplate = '1'" in response.content:
+            html_doc = html.fromstring(response.content)
             page_data = {
                 "商标图片": html_doc.xpath("//*[@id='tmImage']/@img_src")[0],
                 "商品/服务": "".join(html_doc.xpath("//*[@class='info']")[0].text.split()),
@@ -74,7 +75,5 @@ class DetailPageExample(_BaseExample):
 
 
 if __name__ == "__main__":
-    raise Exception("暂不可用，携带错误参数访问返回400大概率封IP，非要测试请配置代理访问")
-
     example = DetailPageExample(tid="TID2019057434B2208C2A7FED13413F699DF629A035310")
     example.run()
