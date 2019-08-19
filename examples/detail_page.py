@@ -1,12 +1,8 @@
 """商标综合查询tab 详情页example"""
 from pprint import pprint
-from urllib import parse
 
-import requests
 from lxml import html
 
-from common.api import online_encrypt
-from common.js import ctx
 from examples import _BaseExample
 
 API = "http://120.78.76.198:8000/trademark/detail"
@@ -17,44 +13,15 @@ class DetailPageExample(_BaseExample):
         super(DetailPageExample, self).__init__(*args, **kwargs)
         self.tid = tid
 
-    @staticmethod
-    def local_encrypt(path: str, request_args: dict) -> dict:
-        """调用本地js上下文加密"""
-        string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
-
-        cookies = ctx.call("get_cookies")
-
-        y7b = ctx.call("get_y7bRbp", path, string)
-        c1k5 = ctx.call("get_c1K5tw0w6", string, y7b, 2)
-        params = {"y7bRbp": y7b, "c1K5tw0w6_": c1k5}
-
-        return {
-            "cookies": cookies,
-            "params": params,
-        }
-
-    def _request(self, url: str) -> requests.Response:
-        path = parse.urlparse(url).path
+    def detail_page(self):
+        """商标详情页"""
+        url = "http://wsjs.saic.gov.cn/txnDetail.do"
 
         request_args = {
             "request:tid": self.tid,
         }
 
-        # 本地加密 TODO 已失效
-        # kwargs = self.local_encrypt(path=path, request_args=request_args)
-        # 在线加密
-        kwargs = online_encrypt(url=API, path=path, request_args=request_args)
-
-        response = self.session.post(url, **kwargs)
-        if response.status_code != 200:
-            raise Exception(response.status_code)
-
-        return response
-
-    def detail_page(self):
-        """商标详情页"""
-        url = "http://wsjs.saic.gov.cn/txnDetail.do"
-        response = self._request(url)
+        response = self._request(url=url, request_args=request_args, api=API)
 
         # 提取数据
         html_doc = html.fromstring(response.content)
@@ -72,14 +39,21 @@ class DetailPageExample(_BaseExample):
                         key = key[0]
                         value = (td_list[index + 1].xpath("text()") or [""])[0]
                         page_data[key] = value.strip()
+
             pprint(page_data)
+
         else:
             print("商标详情无数据，可能是商标正等待受理，暂无法查询详细信息。")
 
     def process_page(self):
         """商标流程页"""
         url = "http://wsjs.saic.gov.cn/txnDetail2.do"
-        response = self._request(url=url)
+
+        request_args = {
+            "request:tid": self.tid,
+        }
+
+        response = self._request(url=url, request_args=request_args, api=API)
 
         # 提取数据
         keys = ("申请/注册号", "业务名称", "环节名称", "结论", "日期")
@@ -100,5 +74,7 @@ class DetailPageExample(_BaseExample):
 
 
 if __name__ == "__main__":
+    raise Exception("暂不可用，携带错误参数访问返回400大概率封IP，非要测试请配置代理访问")
+
     example = DetailPageExample(tid="TID2019057434B2208C2A7FED13413F699DF629A035310")
     example.run()

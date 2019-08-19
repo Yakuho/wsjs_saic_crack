@@ -1,37 +1,15 @@
 """商品/服务项目tab example"""
-from urllib import parse
-
 from lxml import html
 
-from common.api import online_encrypt
-from common.js import ctx
 from examples import _BaseExample
 
 API = "http://120.78.76.198:8000/trademark/goods_service"
 
 
 class GoodsServiceExample(_BaseExample):
-    @staticmethod
-    def local_encrypt(path: str, request_args: dict) -> dict:
-        """调用本地js上下文加密"""
-        string = "&".join(f"{k}={parse.quote(str(v))}" for k, v in request_args.items())
-
-        cookies = ctx.call("get_cookies")
-
-        mm = ctx.call("get_MmEwMD", path)
-        c1k5 = ctx.call("get_c1K5tw0w6", string, mm, 5)
-        params = {"MmEwMD": mm}
-        data = {"c1K5tw0w6_": c1k5}
-
-        return {
-            "cookies": cookies,
-            "params": params,
-            "data": data,
-        }
 
     def run(self):
         url = "http://wsjs.saic.gov.cn/txnGoodsService01.ajax"
-        path = parse.urlparse(url).path
 
         page = 1
         page_size = 15
@@ -53,14 +31,7 @@ class GoodsServiceExample(_BaseExample):
             "attribute-node:record_start-row": (page - 1) * page_size + 1,
         }
 
-        # 本地加密 TODO 已失效
-        # kwargs = self.local_encrypt(path=path, request_args=request_args)
-        # 在线加密
-        kwargs = online_encrypt(url=API, path=path, request_args=request_args)
-
-        response = self.session.post(url, **kwargs)
-        if response.status_code != 200:
-            raise Exception(response.status_code)
+        response = self._request(url=url, request_args=request_args, api=API)
 
         # 提取数据
         html_doc = html.fromstring(response.content)
