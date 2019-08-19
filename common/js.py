@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from typing import Dict, Union
 from urllib import parse
 
@@ -6,8 +6,8 @@ import execjs.runtime_names
 
 
 def _get_crack_js() -> str:
-    project_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-    file_path = os.path.join(project_path, "js", "crack.js")
+    project_path = Path(__file__).parent.parent.absolute()
+    file_path = project_path.joinpath("js", "crack.js")
 
     with open(file_path, encoding="utf-8") as f:
         return f.read()
