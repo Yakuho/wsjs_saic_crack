@@ -10,7 +10,6 @@ API = "http://120.78.76.198:8000/trademark/detail"
 
 class DetailPageExample(_BaseExample):
     def __init__(self, tid: str, *args, **kwargs):
-        raise Exception("暂不可用，携带错误参数访问返回400大概率封IP，非要测试请配置代理访问")
         super(DetailPageExample, self).__init__(*args, **kwargs)
         self.tid = tid
 
