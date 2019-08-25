@@ -14,7 +14,7 @@ def online_encrypt(api: str, path: str, request_args: Dict[str, Union[str, int]]
     if response.status_code == 503:
         raise Exception("接口流量控制，服务暂不可用")
     elif response.status_code != 200:
-        raise Exception(response.json())
+        raise Exception(response.text)
 
     json_data = response.json()
     return json_data
